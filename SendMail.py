@@ -1,4 +1,4 @@
-from Helpers.Results import WriteEmail
+from WriteEmail import WriteEmail
 
 
 page_method = WriteEmail

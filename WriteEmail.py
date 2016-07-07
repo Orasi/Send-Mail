@@ -1,11 +1,11 @@
-import unittest
-import builtins
-import smtplib
 import logging
-from Helpers.EmailList import EmailList
+import smtplib
+import unittest
+
+from EmailList import EmailList
+
 
 # from Helpers.BaseTest import BaseTest
-from sauceclient import SauceClient
 
 class WriteEmail(unittest.TestResult):
 
