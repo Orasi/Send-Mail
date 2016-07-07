@@ -2,11 +2,12 @@ import unittest
 import builtins
 import smtplib
 import logging
+from Helpers.EmailList import EmailList
 
 # from Helpers.BaseTest import BaseTest
 from sauceclient import SauceClient
 
-class UploadRegressionResults(unittest.TestResult):
+class WriteEmail(unittest.TestResult):
 
     #Logging Setup for Sending and Writing the Email Method
     global logger
@@ -16,10 +17,10 @@ class UploadRegressionResults(unittest.TestResult):
     smtp_user = 'orasigeolock@gmail.com'
     smtp_pass = 'Orasi01!geolock'
 
-    email_list =  {
-        "brian.menzies@orasi.com",
-        # "matt.watson@orasi.com",
-    }
+    # email_list =  {
+    #     "brian.menzies@orasi.com",
+    #     # "matt.watson@orasi.com",
+    # }
     # deviceAddress = '127.0.0.1'
     # devicePort = '7505'
     results_file_name = 'results.txt'
@@ -28,13 +29,13 @@ class UploadRegressionResults(unittest.TestResult):
     def send_mail(self, results):
         sender = 'orasigeolock@gmail.com'
         # receivers = ['brian.menzies@orasi.com']
-        subject = 'Clearleap Mobile Regression Test Results'
+        subject = 'Test Results'
         message = 'FROM: orasigeolock@gmail.com\n' + \
                   'To: brian.menzies@orasi.com\n' + \
                   'Subject:' + subject + '\n\n' \
-                                         'Mobile Regression Test Results:  \n' + results
+                                         'Test Results:  \n' + results
 
-        for to_address in self.email_list:
+        for to_address in EmailList.email_list:
             try:
                 smtpObj = smtplib.SMTP(host='smtp.gmail.com', port=587)
                 smtpObj.starttls()
